@@ -1,5 +1,6 @@
 import 'package:design1/page1.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo 12345',
+      title: 'Flutter Demo 123451',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
@@ -32,12 +33,15 @@ class _LoginPageState extends State<LoginPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(
-          'Hello!',
-          style: TextStyle(
-              fontSize: MediaQuery.of(context).size.height / 25,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 70),
+          child: Text(
+            'Hello!',
+            style: TextStyle(
+                fontSize: MediaQuery.of(context).size.height / 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue),
+          ),
         )
       ],
     );
@@ -119,6 +123,49 @@ class _LoginPageState extends State<LoginPage> {
     ]);
   }
 
+  Widget _buildOrRow() {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+      Container(
+        margin: EdgeInsets.only(bottom: 20),
+        child: Text(
+          '- OR -',
+          style: TextStyle(
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      )
+    ]);
+  }
+
+  Widget _buildSocialButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: mainColor,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0, 3),
+                    blurRadius: 6.0)
+              ],
+            ),
+            child: Icon(
+              FontAwesomeIcons.googleDrive,
+              color: Colors.white,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
   Widget _buildContainer() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -152,8 +199,39 @@ class _LoginPageState extends State<LoginPage> {
                 _buildPasswordRow(),
                 _buildForgetPasswordButton(),
                 _buildLoginButton(),
+                _buildOrRow(),
+                _buildSocialButton(),
               ],
             ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildSignUpBtn() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 40),
+          child: TextButton(
+            onPressed: () {},
+            child: RichText(
+                text: TextSpan(children: [
+              TextSpan(
+                  text: "Don't have an account? ",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: MediaQuery.of(context).size.height / 40,
+                      fontWeight: FontWeight.w400)),
+              TextSpan(
+                  text: "Sign Up",
+                  style: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: MediaQuery.of(context).size.height / 40,
+                      fontWeight: FontWeight.bold))
+            ])),
           ),
         )
       ],
@@ -164,6 +242,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xfff2f3f7),
       body: Stack(
         children: <Widget>[
@@ -183,6 +262,7 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               _buildLogo(),
               _buildContainer(),
+              _buildSignUpBtn(),
             ],
           )
         ],
