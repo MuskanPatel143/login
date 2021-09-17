@@ -5,20 +5,25 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return new Scaffold(
+        // Image(image: AssetImage('assets/images/back.png'),),
+        body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/images/back.png"), fit: BoxFit.cover),
-      ),
-      child: Center(
-        child: new Column(children: [
-          TextButton(
-              onPressed: () {},
-              child: Text('Welcome', style: TextStyle(color: Colors.white))),
-        ]),
+          image: AssetImage("assets/images/bulb.jpg"),
+          fit: BoxFit.cover,
+        ),
+
+        // child: Center(
+        //   child: new Column(children: [
+        //     TextButton(
+        //         onPressed: () {},
+        //         child: Text('Welcome', style: TextStyle(color: Colors.white))),
+        //   ]),
+        // ),
       ),
 
       // color: Colors.blueGrey,
-    );
+    ));
   }
 }
