@@ -5,8 +5,20 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueGrey,
+    return new Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/images/back.png"), fit: BoxFit.cover),
+      ),
+      child: Center(
+        child: new Column(children: [
+          TextButton(
+              onPressed: () {},
+              child: Text('Welcome', style: TextStyle(color: Colors.white))),
+        ]),
+      ),
+
+      // color: Colors.blueGrey,
     );
   }
 }

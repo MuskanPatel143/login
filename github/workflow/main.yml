@@ -11,7 +11,7 @@ on:
 name: "Build & Realease"
 jobs:
   build:
-    name: Build & Release
+    name: 'Build & Release'
     runs-on: 
     steps:
       - uses: actions/checkout@v1

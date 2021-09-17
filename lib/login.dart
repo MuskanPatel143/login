@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'home.dart';
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -95,24 +97,47 @@ class _LoginPageState extends State<LoginPage> {
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
-  void validate() {
-    if (formkey.currentState!.validate()) {
-      print("validated");
+  // void validate() {
+  //   if (formkey.currentState!.validate()) {
+  //     print("validated");
+  //     if (email != '' && password != '') {
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => MyHomePage()),
+  //       );
+  //     }
+  //   } else {
+  //     print("Not Validated");
+  //   }
+  // }
+
+  validateEmail(String value) {
+    RegExp regex = new RegExp(
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$");
+    // ignore: unnecessary_null_comparison
+    if (!regex.hasMatch(value) || value == null) {
+      setState(() {
+        email = 'Enter a valid email address';
+      });
+      if (password == '') {
+        setState(() {
+          password = 'Enter password';
+        });
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyHomePage()),
+        );
+      }
     } else {
-      print("Not Validated");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MyHomePage()),
+      );
     }
   }
-  // validateEmail(String value) {
-  //   RegExp regex = new RegExp(
-  //       r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-  //       r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-  //       r"{0,253}[a-zA-Z0-9])?)*$");
-  //   // ignore: unnecessary_null_comparison
-  //   if (!regex.hasMatch(value) || value == null)
-  //     return 'Enter a valid email address';
-  //   else
-  //     return null;
-  // }
 
   Widget _buildLoginButton() {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -123,13 +148,8 @@ class _LoginPageState extends State<LoginPage> {
         margin: EdgeInsets.only(bottom: 20),
         child: TextButton(
           onPressed: () {
-            validate();
-            // validateEmail(email);
-
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => MyHomePage()),
-            // );
+            // validate();
+            validateEmail(email);
           },
           child: Text('Login'),
           style: TextButton.styleFrom(
