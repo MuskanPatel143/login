@@ -6,24 +6,26 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+
         // Image(image: AssetImage('assets/images/back.png'),),
         body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bulb.jpg"),
-          fit: BoxFit.cover,
+          image: AssetImage("images/images2.png"),
+          fit: BoxFit.fill,
         ),
-
-        // child: Center(
-        //   child: new Column(children: [
-        //     TextButton(
-        //         onPressed: () {},
-        //         child: Text('Welcome', style: TextStyle(color: Colors.white))),
-        //   ]),
-        // ),
       ),
-
+      child: Center(
+        child:
+            new Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          TextButton(
+              onPressed: () {},
+              child: Text('Welcome', style: TextStyle(color: Colors.white))),
+        ]),
+      ),
       // color: Colors.blueGrey,
-    ));
+    )
+        // return ListTile(title: Text('Item ${index+1}'),)
+        );
   }
 }
